@@ -1,30 +1,26 @@
-# React + TypeScript + Vite
+# Intersection Observer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Intersection Observer detects when an element enters or exits the viewport or intersects with another element.
 
-Currently, two official plugins are available:
+Check this component
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- src/components/InteractionComponent.tsx
+- src/hooks/useIntersectionObserver.ts
 
-## Expanding the ESLint configuration
+# Toast
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+What I learned from this small UI:
 
-- Configure the top-level `parserOptions` property like this:
+- Shared state via hook: Used a singleton-like pattern by storing state in a shared in-memory constant. Synced it with local React state using listeners.
+- Toast auto-dismiss: Implemented a toast queue where each toast is scheduled for removal using a timeout.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+We can use this in any component without a Provider—the toast state remains shared across components.
+
+```tsx
+const {toast} = useToast();
+
+const {update, dismiss} = toast({
+  title: 'Failed to create note',
+  description: 'Please try again later.',
+});
 ```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list

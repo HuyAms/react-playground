@@ -15,6 +15,8 @@ import {
 import { ApolloProvider } from '@apollo/react-hooks';
 import {ApolloClient, InMemoryCache} from '@apollo/client';
 import { InteractionObserver } from './pages/InteractionObserver.tsx';
+import { ToastPage } from './pages/Toast.tsx';
+import { Container } from '@mui/material';
 
 
 const cache = new InMemoryCache();
@@ -33,6 +35,10 @@ const router = createBrowserRouter([
   {
     path: "/interaction-observer",
     element: <InteractionObserver/>,
+  },
+  {
+    path: "/toast",
+    element: <ToastPage/>
   },
 ]);
 
@@ -60,7 +66,9 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <ApolloProvider client={client}>
       <ThemeProvider theme={darkTheme}>
         <CssBaseline/>
-        <RouterProvider router={router} />
+        <Container maxWidth="lg">
+          <RouterProvider router={router} />
+        </Container>
       </ThemeProvider>
     </ApolloProvider>
    
