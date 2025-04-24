@@ -13,19 +13,11 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import { ApolloProvider } from '@apollo/react-hooks';
-import {ApolloClient, InMemoryCache} from '@apollo/client';
 import { InteractionObserver } from './pages/InteractionObserver.tsx';
 import { ToastPage } from './pages/Toast.tsx';
 import { Container } from '@mui/material';
+import RegisterPage from './pages/Register.tsx';
 
-
-const cache = new InMemoryCache();
-
-const client = new ApolloClient({
-  cache,
-  connectToDevTools: true,
-  uri: 'https://swapi-graphql.netlify.app/.netlify/functions/index',
-});
 
 const router = createBrowserRouter([
   {
@@ -39,6 +31,10 @@ const router = createBrowserRouter([
   {
     path: "/toast",
     element: <ToastPage/>
+  },
+  {
+    path: "/register",
+    element: <RegisterPage/>
   },
 ]);
 
@@ -63,15 +59,11 @@ const darkTheme = createTheme({
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <ApolloProvider client={client}>
       <ThemeProvider theme={darkTheme}>
         <CssBaseline/>
         <Container maxWidth="lg">
           <RouterProvider router={router} />
         </Container>
-      </ThemeProvider>
-    </ApolloProvider>
-   
-    
+      </ThemeProvider>    
   </React.StrictMode>,
 )
