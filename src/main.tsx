@@ -19,6 +19,7 @@ import { Container } from '@mui/material';
 import RegisterPage from './pages/Register.tsx';
 
 
+import { ScrollVisualizer } from './pages/ScrollDepth.tsx';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
   {
     path: "/register",
     element: <RegisterPage/>
+  },
+  {
+    path: "/scroll-depth",
+    element: <ScrollVisualizer/>
   },
 ]);
 

@@ -29,3 +29,13 @@ const {update, dismiss} = toast({
 
 - Experiment with React 19’s useActionState
 - Implement form validation
+
+# ScrollVisualizer
+
+This demo demonstrates how to calculate the scroll percentage within a scroll container.
+
+**Key APIs**
+
+- [scrollHeight](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollHeight): The total height of an element's content, including the content not visible on the screen due to overflow
+- [scrollTop](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollTop): The number of pixels by which an element's content is scrolled from its top edge.
+- [clientHeight](https://developer.mozilla.org/en-US/docs/Web/API/Element/clientHeight): CSS height + CSS padding - height of horizontal scrollbar (if present)
