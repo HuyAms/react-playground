@@ -76,6 +76,9 @@ export default function RegisterPage() {
         }
     }, initialFormState)
 
+    // TODO: render errors based on the state
+    console.log("Form state:", state);
+
     return (
         <form action={formAction}>
             <div className="flex flex-col gap-2">
