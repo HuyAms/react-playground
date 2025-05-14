@@ -39,3 +39,11 @@ This demo demonstrates how to calculate the scroll percentage within a scroll co
 - [scrollHeight](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollHeight): The total height of an element's content, including the content not visible on the screen due to overflow
 - [scrollTop](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollTop): The number of pixels by which an element's content is scrolled from its top edge.
 - [clientHeight](https://developer.mozilla.org/en-US/docs/Web/API/Element/clientHeight): CSS height + CSS padding - height of horizontal scrollbar (if present)
+
+# Folders
+
+A small demo for rendering nested folders with the following features:
+
+- Recursive rendering of nested folders
+- Toggle to expand/collapse child folders
+- Folder expansion state managed with a Set

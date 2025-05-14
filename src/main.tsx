@@ -17,6 +17,8 @@ import { InteractionObserver } from './pages/InteractionObserver.tsx';
 import { ToastPage } from './pages/Toast.tsx';
 import { Container } from '@mui/material';
 import RegisterPage from './pages/Register.tsx';
+import FolderPage from './pages/Folders/FolderPageV2.tsx';
+import FolderPageV1 from './pages/Folders/FolderPageV1.tsx';
 
 
 import { ScrollVisualizer } from './pages/ScrollDepth.tsx';
@@ -24,6 +26,13 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App/>,
+  {
+    path: '/folders-v1',
+    element: <FolderPageV1 />,
+  },
+  {
+    path: '/folders-v2',
+    element: <FolderPage />,
   },
   {
     path: "/interaction-observer",
