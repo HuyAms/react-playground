@@ -22,6 +22,7 @@ import Polling2Page from './pages/Polling/Polling2/Polling2.tsx';
 import Polling3Page from './pages/Polling/Polling3/Polling3.tsx';
 import {ScrollVisualizer} from './pages/ScrollDepth.tsx';
 import {client} from './pages/ApolloClient/client.ts';
+import {FileUploadPage} from './pages/FileUpload/FileUpload.tsx';
 
 const router = createBrowserRouter([
   {
@@ -67,6 +68,10 @@ const router = createBrowserRouter([
   {
     path: '/polling3',
     element: <Polling3Page />,
+  },
+  {
+    path: '/file-upload',
+    element: <FileUploadPage />,
   },
 ]);
 
