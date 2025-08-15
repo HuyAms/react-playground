@@ -48,4 +48,8 @@ A small demo for rendering nested folders with the following features:
 - Toggle to expand/collapse child folders
 - Folder expansion state managed with a Set
 
-# File Upload
+# Variant Component
+
+Learn to use class-variance-authority
+
+src/components/button/Button.tsx
