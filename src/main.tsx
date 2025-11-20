@@ -1,3 +1,5 @@
+import './instrument';
+import * as Sentry from '@sentry/react';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App.tsx';
@@ -24,7 +26,9 @@ import {ScrollVisualizer} from './pages/ScrollDepth.tsx';
 import {client} from './pages/ApolloClient/client.ts';
 import {FileUploadPage} from './pages/FileUpload/FileUpload.tsx';
 
-const router = createBrowserRouter([
+const sentryCreateBrowserRouter = Sentry.wrapCreateBrowserRouterV6(createBrowserRouter);
+
+const router = sentryCreateBrowserRouter([
   {
     path: '/',
     element: <App />,
@@ -95,13 +99,15 @@ const darkTheme = createTheme({
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <ApolloProvider client={client}>
-      <ThemeProvider theme={darkTheme}>
-        <CssBaseline />
-        <Container maxWidth="lg">
-          <RouterProvider router={router} />
-        </Container>
-      </ThemeProvider>
-    </ApolloProvider>
+    <Sentry.ErrorBoundary fallback={<p>An error has occurred</p>}>
+      <ApolloProvider client={client}>
+        <ThemeProvider theme={darkTheme}>
+          <CssBaseline />
+          <Container maxWidth="lg">
+            <RouterProvider router={router} />
+          </Container>
+        </ThemeProvider>
+      </ApolloProvider>
+    </Sentry.ErrorBoundary>
   </React.StrictMode>
 );
