@@ -25,6 +25,7 @@ import Polling3Page from './pages/Polling/Polling3/Polling3.tsx';
 import {ScrollVisualizer} from './pages/ScrollDepth.tsx';
 import {client} from './pages/ApolloClient/client.ts';
 import {FileUploadPage} from './pages/FileUpload/FileUpload.tsx';
+import {Ratelimit} from './pages/Ratelimit.tsx';
 
 const sentryCreateBrowserRouter = Sentry.wrapCreateBrowserRouterV6(createBrowserRouter);
 
@@ -76,6 +77,10 @@ const router = sentryCreateBrowserRouter([
   {
     path: '/file-upload',
     element: <FileUploadPage />,
+  },
+  {
+    path: '/ratelimit',
+    element: <Ratelimit />,
   },
 ]);
 

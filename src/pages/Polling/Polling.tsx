@@ -1,42 +1,40 @@
-import { Button } from "@mui/material";
-import { useEffect, useState } from "react"
+import {Button} from '@mui/material';
+import {useEffect, useState} from 'react';
 
 const POLLING_INTERVAL = 2000;
 
 export default function PollingPage() {
+  const [count, setCount] = useState(0);
+  const [pollingEabled, setPollingEabled] = useState(false);
 
-    const [count, setCount] = useState(0);
-    const [pollingEabled, setPollingEabled] = useState(false);
+  useEffect(() => {
+    console.log('useEffect polling...');
 
-    useEffect(() => {
+    if (!pollingEabled) {
+      return;
+    }
 
-        console.log("useEffect polling...")
+    function polling() {
+      console.log('polling...');
+    }
 
-        if (!pollingEabled) {
-            return;
-        }
+    // initial polling
+    polling();
 
-        function polling() {
-            console.log("polling...")
-        }
+    const interval = setInterval(polling, POLLING_INTERVAL);
 
-        // initial polling
-        polling();
+    return () => {
+      console.log('cleanup...');
+      clearInterval(interval);
+    };
+  }, [pollingEabled]);
 
-        const interval = setInterval(polling, POLLING_INTERVAL);
-
-        return () => {
-            console.log("cleanup...")
-            clearInterval(interval);
-        }
-    }, [pollingEabled])
-
-    return (
-        <div>
-            <h1>Polling</h1>
-            <Button onClick={() => setCount(count + 1)}>{count}</Button>
-            <Button onClick={() => setPollingEabled(true)}>Start polling</Button>
-            <Button onClick={() => setPollingEabled(false)}>Stop polling</Button>
-        </div>
-    )
+  return (
+    <div>
+      <h1>Polling</h1>
+      <Button onClick={() => setCount(count + 1)}>{count}</Button>
+      <Button onClick={() => setPollingEabled(true)}>Start polling</Button>
+      <Button onClick={() => setPollingEabled(false)}>Stop polling</Button>
+    </div>
+  );
 }

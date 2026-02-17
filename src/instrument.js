@@ -23,6 +23,9 @@ Sentry.init({
       createRoutesFromChildren,
       matchRoutes,
     }),
+    Sentry.graphqlClientIntegration({
+      endpoints: [/\/graphql$/],
+    }),
     Sentry.replayIntegration(),
   ],
   // Set tracesSampleRate to 1.0 to capture 100%
@@ -38,4 +41,5 @@ Sentry.init({
   // https://docs.sentry.io/platforms/javascript/session-replay/configuration/#general-integration-configuration
   replaysSessionSampleRate: 0.1,
   replaysOnErrorSampleRate: 1.0,
+  enableLogs: true,
 });
